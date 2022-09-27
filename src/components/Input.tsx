@@ -199,7 +199,7 @@ const Input = ({
       props.onContentSizeChange(event)
     }
   }
-}
+});
 
 Input.defaultProps = defaultProps
 
