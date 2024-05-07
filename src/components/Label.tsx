@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Text, Animated, I18nManager } from 'react-native'
-import PropTypes from 'prop-types'
+import type { LabelProps } from './types'
 
 const Label = ({
   hasValue,
   focused,
-  labelActiveScale,
-  labelActiveTop,
-  labelDuration,
+  labelActiveScale = 0.8,
+  labelActiveTop = -18,
+  labelDuration = 200,
   paddingTop,
   paddingRight,
   paddingLeft,
@@ -16,11 +16,11 @@ const Label = ({
   fontFamily,
   fontWeight,
   label,
-  labelColor,
-  labelActiveColor,
+  labelColor = 'gray',
+  labelActiveColor = '#3f51b5',
   error,
   errorColor
-}) => {
+}: LabelProps) => {
   const [animatedScale] = useState(new Animated.Value(hasValue || focused ? labelActiveScale : 1))
   const [animatedTranslate] = useState(new Animated.Value(hasValue || focused ? labelActiveTop : 0))
 
@@ -49,9 +49,9 @@ const Label = ({
         width: '200%',
         top: paddingTop,
         transform: [{ translateY: animatedTranslate }, { scale: animatedScale }]
-      }}
-      numberOfLines={1}>
+      }}>
       <Text
+        numberOfLines={1}
         style={{
           ...textRTLStyles,
           top: 0,
@@ -67,23 +67,6 @@ const Label = ({
       </Text>
     </Animated.View>
   )
-}
-
-Label.propTypes = {
-  label: PropTypes.string,
-  labelDuration: PropTypes.number,
-  labelColor: PropTypes.string,
-  labelActiveColor: PropTypes.string,
-  labelActiveScale: PropTypes.number,
-  labelActiveTop: PropTypes.number
-}
-
-Label.defaultProps = {
-  labelDuration: 200,
-  labelColor: 'gray',
-  labelActiveColor: '#3f51b5',
-  labelActiveScale: 0.8,
-  labelActiveTop: -18
 }
 
 export default Label
