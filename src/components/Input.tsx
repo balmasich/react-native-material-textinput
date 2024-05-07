@@ -7,35 +7,23 @@ import Underline from './Underline'
 import ErrorHelper from './ErrorHelper'
 import type { InputProps, HasValueProps, FocusedProps, TextInputStyleProps } from './types'
 
-const defaultProps = {
-  ...ErrorHelper.defaultProps,
-  marginBottom: 8,
-  paddingTop: 20,
-  paddingRight: 0,
-  paddingBottom: 8,
-  paddingLeft: 0,
-  color: 'black',
-  fontSize: 15,
-  fontWeight: 'normal'
-}
-
 const Input = ({
   inputRef,
   minHeight,
   maxHeight,
   marginTop,
   marginRight,
-  marginBottom,
+  marginBottom = 8,
   marginLeft,
-  paddingTop,
-  paddingRight,
-  paddingBottom,
-  paddingLeft,
-  color,
+  paddingTop = 20,
+  paddingRight = 0,
+  paddingBottom = 8,
+  paddingLeft = 0,
+  color = 'black',
   activeColor,
   fontFamily,
-  fontSize,
-  fontWeight,
+  fontSize = 15,
+  fontWeight = 'normal',
   label,
   labelDuration,
   labelColor,
@@ -50,11 +38,11 @@ const Input = ({
   underlineActiveColor,
   underlineActiveHeight,
   error,
-  errorColor,
-  errorPaddingTop,
-  errorFontSize,
+  errorColor = '#fc1f4a',
+  errorPaddingTop = 8,
+  errorFontSize = 12,
   ...props
-}: InputProps & typeof defaultProps) => {
+}: InputProps) => {
   const [value, setValue] = useState('')
   const [focused, setFocused] = useState<FocusedProps['focused']>(false)
   const [height, setHeight] = useState(fontSize * 1.5)
@@ -199,8 +187,6 @@ const Input = ({
       props.onContentSizeChange(event)
     }
   }
-});
-
-Input.defaultProps = defaultProps
+};
 
 export default Input

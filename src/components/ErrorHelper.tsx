@@ -2,13 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 import type { ErrorHelperProps } from './types'
 
-const defaultProps = {
-  errorPaddingTop: 8,
-  errorColor: '#fc1f4a',
-  errorFontSize: 12
-}
-
-const ErrorHelper = ({ error, errorColor, errorPaddingTop, errorFontSize }: ErrorHelperProps & typeof defaultProps) => {
+const ErrorHelper = ({ error, errorColor = '#fc1f4a', errorPaddingTop = 8, errorFontSize = 12 }: ErrorHelperProps) => {
   return (
     <Text
       style={{
@@ -21,7 +15,5 @@ const ErrorHelper = ({ error, errorColor, errorPaddingTop, errorFontSize }: Erro
     </Text>
   )
 }
-
-ErrorHelper.defaultProps = defaultProps
 
 export default ErrorHelper

@@ -2,20 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Text, Animated, I18nManager } from 'react-native'
 import type { LabelProps } from './types'
 
-const defaultProps = {
-  labelDuration: 200,
-  labelColor: 'gray',
-  labelActiveColor: '#3f51b5',
-  labelActiveScale: 0.8,
-  labelActiveTop: -18
-}
-
 const Label = ({
   hasValue,
   focused,
-  labelActiveScale,
-  labelActiveTop,
-  labelDuration,
+  labelActiveScale = 0.8,
+  labelActiveTop = -18,
+  labelDuration = 200,
   paddingTop,
   paddingRight,
   paddingLeft,
@@ -24,11 +16,11 @@ const Label = ({
   fontFamily,
   fontWeight,
   label,
-  labelColor,
-  labelActiveColor,
+  labelColor = 'gray',
+  labelActiveColor = '#3f51b5',
   error,
   errorColor
-}: LabelProps & typeof defaultProps) => {
+}: LabelProps) => {
   const [animatedScale] = useState(new Animated.Value(hasValue || focused ? labelActiveScale : 1))
   const [animatedTranslate] = useState(new Animated.Value(hasValue || focused ? labelActiveTop : 0))
 
@@ -76,7 +68,5 @@ const Label = ({
     </Animated.View>
   )
 }
-
-Label.defaultProps = defaultProps
 
 export default Label

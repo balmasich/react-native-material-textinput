@@ -2,9 +2,6 @@ import React from 'react'
 import { Text } from 'react-native'
 import type { PlaceholderProps } from './types'
 
-const defaultProps = {
-  placeholderColor: 'gray'
-}
 
 const Placeholder = ({
   paddingTop,
@@ -15,10 +12,10 @@ const Placeholder = ({
   fontSize,
   fontWeight,
   placeholder,
-  placeholderColor,
+  placeholderColor = 'gray',
   hasValue,
   focused
-}: PlaceholderProps & typeof defaultProps) => {
+}: PlaceholderProps) => {
   return (
     <Text
       numberOfLines={1}
@@ -40,7 +37,5 @@ const Placeholder = ({
     </Text>
   )
 }
-
-Placeholder.defaultProps = defaultProps
 
 export default Placeholder
